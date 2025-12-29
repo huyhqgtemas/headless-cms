@@ -14,7 +14,7 @@ excerpt: "Master Docker containerization with this comprehensive beginner-friend
 readingTime: 15
 ---
 
-![alt text](../../../public/images/featured-image.png)
+![alt text](../../../images/featured-image.png)
 
 # Business Analysis – The Bridge Between Vision, Value, and Successful Software Delivery
 

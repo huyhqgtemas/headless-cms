@@ -24,14 +24,18 @@
 ### Architecture
 
 ```
-GitHub Repository (Content Storage)
+GitHub CMS Repository (Content + Images)
          ↓
-   GitHub API
+   GitHub API (Fetch content)
          ↓
 NextJS App (Frontend)
-├── Static Generation (ISR)
-├── API Routes
-└── Dynamic Rendering
+├── Fetch markdown via API
+├── Parse frontmatter
+├── Render content
+└── Load images from GitHub raw URLs
+
+Images:
+GitHub raw URLs → Next/Image → Optimized & Cached
 ```
 
 ### Key Features
@@ -51,7 +55,7 @@ NextJS App (Frontend)
 ### Complete Structure
 
 ```
-my-blog-cms/
+my-blog-cms/                             ← GitHub CMS Repository (Content Only)
 │
 ├── content/
 │   │
@@ -78,11 +82,10 @@ my-blog-cms/
 │       ├── contact.md
 │       └── privacy-policy.md
 │
-├── public/
-│   └── images/
-│       ├── docker-tutorial.jpg
-│       ├── kubernetes-basics.png
-│       └── author-avatar.jpg
+├── images/                              ← All images
+│   ├── docker-tutorial.jpg
+│   ├── kubernetes-basics.png
+│   └── author-avatar.jpg
 │
 └── README.md
 ```
@@ -103,7 +106,7 @@ author: "John Doe"
 authorEmail: "john@example.com"
 category: "technology"
 tags: ["docker", "devops", "containers", "tutorial", "beginner"]
-featuredImage: "/images/docker-tutorial.jpg"
+featuredImage: "https://raw.githubusercontent.com/owner/repo/main/images/docker-tutorial.jpg"
 excerpt: "Master Docker containerization with this comprehensive beginner-friendly guide"
 readingTime: 15
 ---
@@ -247,11 +250,12 @@ Email: hello@example.com
 
 **featuredImage**
 
-- Type: String (path)
+- Type: String (URL)
 - Description: Main post image
-- Example: `"/images/docker-tutorial.jpg"`
-- Path: Relative to public/
+- Example: `"https://raw.githubusercontent.com/owner/repo/main/images/docker-tutorial.jpg"`
+- Format: GitHub raw URL or relative path
 - Dimensions: 1200x630 recommended (OG image)
+- NextJS will handle image optimization
 
 **excerpt**
 
@@ -705,7 +709,7 @@ status: "draft"
 author: "Your Name"
 category: "technology"
 tags: ["tag1", "tag2"]
-featuredImage: "/images/your-slug.jpg"
+featuredImage: "https://raw.githubusercontent.com/owner/repo/main/images/your-slug.jpg"
 ---
 
 # Your Title
@@ -846,16 +850,76 @@ Content here...
 **Via GitHub UI:**
 
 ```
-1. Navigate: public/images/
+1. Navigate: images/
 2. Click "Add file" → "Upload files"
 3. Drag & drop images
 4. Commit: "Add: images for docker tutorial"
 ```
 
-**Reference in Post:**
+**Reference in Markdown:**
 
 ```markdown
-![Docker Architecture](/images/docker-architecture.png)
+![Docker Architecture](https://raw.githubusercontent.com/owner/repo/main/images/docker-architecture.png)
+```
+
+**Reference in Frontmatter:**
+
+```yaml
+featuredImage: "https://raw.githubusercontent.com/owner/repo/main/images/docker-tutorial.jpg"
+```
+
+**Note:** NextJS frontend will fetch images from GitHub and can optionally cache/optimize them.
+
+### Image Path Strategy
+
+Since this is a **content-only repository** (not a NextJS app), images are stored in `images/` folder and referenced via GitHub raw URLs.
+
+**GitHub CMS Repository:**
+
+```
+my-blog-cms/
+├── content/
+│   └── posts/
+│       └── docker-tutorial.md
+└── images/
+    └── docker-tutorial.jpg
+```
+
+**In Markdown Files:**
+
+```yaml
+# Frontmatter
+featuredImage: "https://raw.githubusercontent.com/owner/repo/main/images/docker-tutorial.jpg"
+```
+
+```markdown
+# Content
+
+![Docker Logo](https://raw.githubusercontent.com/owner/repo/main/images/docker-tutorial.jpg)
+```
+
+**NextJS Frontend Handling:**
+
+Next/Image Optimization (Recommended)
+
+```typescript
+// NextJS Image component with optimization
+<Image
+  src={post.featuredImage}
+  alt={post.title}
+  width={1200}
+  height={630}
+/>
+
+// Add to next.config.js
+images: {
+  remotePatterns: [
+    {
+      protocol: 'https',
+      hostname: 'raw.githubusercontent.com',
+    },
+  ],
+}
 ```
 
 ---
@@ -892,6 +956,18 @@ GET https://api.github.com/repos/{owner}/{repo}/contents/content/posts/technolog
 
 ```
 GET https://raw.githubusercontent.com/{owner}/{repo}/main/content/posts/technology/docker-tutorial.md
+```
+
+**Get Image (Raw URL):**
+
+```
+GET https://raw.githubusercontent.com/{owner}/{repo}/main/images/docker-tutorial.jpg
+```
+
+**List All Images:**
+
+```
+GET https://api.github.com/repos/{owner}/{repo}/contents/images
 ```
 
 ### Setup Environment Variables
@@ -1237,9 +1313,9 @@ Day 2-3: Content Writing
 └─ Commit: "Update: add docker basics section"
 
 Day 4: Images & Media
-├─ Navigate: public/images/
+├─ Navigate: images/
 ├─ Upload: docker-guide.jpg
-├─ Add to post: featuredImage
+├─ Add to post: featuredImage with GitHub raw URL
 └─ Commit: "Add: images for docker guide"
 
 Day 5: Review & Publish
@@ -1381,12 +1457,12 @@ Result: ✅ Fresh, accurate content
 ### File Structure Quick Look
 
 ```
-content/
-├── posts/{category}/{slug}.md    → Blog posts
-└── pages/{slug}.md                → Static pages
-
-public/
-└── images/{name}.jpg              → Images
+my-blog-cms/                       → GitHub CMS Repository
+├── content/
+│   ├── posts/{category}/{slug}.md → Blog posts
+│   └── pages/{slug}.md            → Static pages
+├── images/{name}.jpg              → All images
+└── README.md
 ```
 
 ### Frontmatter Templates
@@ -1404,7 +1480,7 @@ status: "published"
 author: "Author Name"
 category: "technology"
 tags: ["tag1", "tag2", "tag3"]
-featuredImage: "/images/image.jpg"
+featuredImage: "https://raw.githubusercontent.com/owner/repo/main/images/image.jpg"
 ---
 ```
 

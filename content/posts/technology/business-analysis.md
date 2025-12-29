@@ -16,6 +16,7 @@ readingTime: 15
 
 ![alt text](../../../images/featured-image.png)
 
+
 # Business Analysis – The Bridge Between Vision, Value, and Successful Software Delivery
 
 ## Introduction

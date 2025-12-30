@@ -9,7 +9,7 @@ author: "John Doe"
 authorEmail: "john@example.com"
 category: "technology"
 tags: ["docker", "devops", "containers", "tutorial", "beginner"]
-featuredImage: "https://github.com/huyhqgtemas/headless-cms/blob/3a44ffdd09b7dcb9b6ce0308295a7c28fac610e8/images/featured-image.png"
+featuredImage: "https://raw.githubusercontent.com/headless-cms/main/images/featured-image.png"
 excerpt: "Master Docker containerization with this comprehensive beginner-friendly guide"
 readingTime: 15
 ---

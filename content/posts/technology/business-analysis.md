@@ -1,21 +1,18 @@
 ---
-title: "Business Analysis – The Bridge Between Vision, Value, and Successful Software Delivery"
-slug: "business-analysis"
-description: "Business Analysis – The Bridge Between Vision, Value, and Successful Software Delivery"
-publishedAt: "2025-12-29"
-updatedAt: "2025-12-29"
+title: "Complete Docker Tutorial for Beginners"
+slug: "docker-tutorial"
+description: "Learn Docker from scratch with practical examples and best practices for containerization"
+publishedAt: "2024-12-29"
+updatedAt: "2024-12-29"
 status: "published"
 author: "John Doe"
-authorEmail: "john@gtemas.com"
+authorEmail: "john@example.com"
 category: "technology"
-tags: ["ba", "beginner"]
-featuredImage: "/images/docker-tutorial.jpg"
+tags: ["docker", "devops", "containers", "tutorial", "beginner"]
+featuredImage: "https://raw.githubusercontent.com/owner/repo/main/images/docker-tutorial.jpg"
 excerpt: "Master Docker containerization with this comprehensive beginner-friendly guide"
 readingTime: 15
 ---
-
-![alt text](../../../images/featured-image.png)
-
 
 # Business Analysis – The Bridge Between Vision, Value, and Successful Software Delivery
 
@@ -27,7 +24,9 @@ That bridge between business needs and technical execution is where Business Ana
 
 This article explores what Business Analysis truly means, why it is critical, how it integrates into software development, and how Gtemas defines and elevates the standards of our Business Analysts to exceed client expectations.
 
-<iframe width="auto" height="auto" src="https://www.youtube.com/embed/yMdb8P4C180" title="🌐 Business Analysis – The Bridge Between Vision, Value, and Successful Software Delivery" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+![alt text](https://raw.githubusercontent.com/owner/repo/main/images/docker-tutorial.jpg)
+
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/yMdb8P4C180" title="🌐 Business Analysis – The Bridge Between Vision, Value, and Successful Software Delivery" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 [![Watch the video](https://img.youtube.com/vi/yMdb8P4C180/maxresdefault.jpg)](https://youtu.be/yMdb8P4C180)
 

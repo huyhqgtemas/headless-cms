@@ -122,6 +122,8 @@ Docker is a platform for developing, shipping, and running applications in conta
 ## Installing Docker
 
 ### On macOS
+
+![Docker Hello World Output](https://raw.githubusercontent.com/owner/repo/main/images/docker-hello-world.png)
 ```
 
 ### Full Example: Static Page

@@ -1,6 +1,6 @@
 ---
 title: "Complete Docker Tutorial for Beginners"
-slug: "docker-tutorial"
+slug: "business-analysis"
 description: "Learn Docker from scratch with practical examples and best practices for containerization"
 publishedAt: "2024-12-29"
 updatedAt: "2024-12-29"

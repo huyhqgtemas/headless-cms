@@ -24,13 +24,7 @@ That bridge between business needs and technical execution is where Business Ana
 
 This article explores what Business Analysis truly means, why it is critical, how it integrates into software development, and how Gtemas defines and elevates the standards of our Business Analysts to exceed client expectations.
 
-![alt text](https://raw.githubusercontent.com/owner/repo/main/images/docker-tutorial.jpg)
-
 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/yMdb8P4C180" title="🌐 Business Analysis – The Bridge Between Vision, Value, and Successful Software Delivery" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-[![Watch the video](https://img.youtube.com/vi/yMdb8P4C180/maxresdefault.jpg)](https://youtu.be/yMdb8P4C180)
-
-### [Watch this video on YouTube](https://youtu.be/yMdb8P4C180)
 
 ## 1. What Is Business Analysis?
 
